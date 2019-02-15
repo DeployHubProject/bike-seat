@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "bike-seat.name" . }}
+spec:
+  selector:
+    app: {{ include "bike-seat.name" . }}
+  ports:
+    - name: http
+      port: 80
