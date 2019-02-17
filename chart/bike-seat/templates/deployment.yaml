@@ -1,14 +1,14 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ include "bike-seat.name" . }}
+  name: {{ include "bike-seat.name" . }}-{{ .Values.image.version }}
 spec:
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
         app: {{ include "bike-seat.name" . }}
-        version: {{ include "bike-seat.name" . }}-{{ .Values.image.version }}
+        version: {{ .Values.image.version }}
     spec:
       containers:
         - name: {{ include "bike-seat.name" . }}
