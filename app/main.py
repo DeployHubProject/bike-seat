@@ -23,10 +23,6 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-
-
-
-
 import pprint
 from flask import Flask, jsonify, request, abort, make_response
 from pymongo import MongoClient, errors 
