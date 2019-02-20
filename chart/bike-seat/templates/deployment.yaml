@@ -10,7 +10,7 @@ spec:
         app: {{ include "bike-seat.name" . }}
         version: {{ .Values.image.version }}
         dockersha: {{ .Values.DockerSha }}
-        dockerbld: {{ .Values.DockerBuild }}
+        dockerbld: "{{ .Values.DockerBuild }}"
         gitcommit: {{ .Values.GitCommit }}
     spec:
       containers:
