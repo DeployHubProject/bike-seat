@@ -23,6 +23,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 import pprint
+from time import sleep
 from flask import Flask, jsonify, request, abort, make_response
 from pymongo import MongoClient, errors 
 from bson.objectid import ObjectId
@@ -35,13 +36,14 @@ CORS(app)
 
 db = None
 
-try:
-    client = MongoClient('mongodb://mongo-0.mongo:27017')
-    pprint.pprint(client.server_info())
-    db = client.test
-except errors.ConnectionFailure as e:
-    print ("Could not connect to server: %s") % e
-
+while db is None:
+    try:
+        client = MongoClient('mongodb://mongo-0.mongo:27017')
+        pprint.pprint(client.server_info())
+        db = client.test
+    except errors.ConnectionFailure as e:
+     print ("Could not connect to server: %s") % e
+     sleep(10)
 
 @app.route('/getbikeseat', methods=['GET'])
 def get_bikeseat():
