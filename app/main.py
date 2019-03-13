@@ -44,8 +44,7 @@ while db is None:
         pprint.pprint(client.server_info())
         db = client.test
     except errors.ConnectionFailure as e:
-     print ("Could not connect to server: %s") % e
-     sleep(10)
+        sleep(10)
 
 @app.route('/getbikeseat', methods=['GET'])
 def get_bikeseat():
